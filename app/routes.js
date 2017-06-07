@@ -2,7 +2,7 @@
 // They are all wrapped in the App component, which should contain the navbar etc
 // See http://blog.mxstbr.com/2016/01/react-apps-with-pages for more information
 // about the code splitting business
-import { getAsyncInjectors } from 'utils/asyncInjectors';
+import { getAsyncInjectors } from "utils/asyncInjectors";
 
 const errorLoading = (err) => {
   console.error('Dynamic page loading failed', err); // eslint-disable-line no-console
@@ -30,11 +30,11 @@ export default function createRoutes(store) {
         const renderRoute = loadModule(cb);
 
         importModules.then(([
-          component,
-          navigationReducer,
-          navigationSagas,
+                              component,
+                              navigationReducer,
+                              navigationSagas,
 
-        ]) => {
+                            ]) => {
           injectReducer('navigationContainer', navigationReducer.default);
           injectSagas('navigationContainer', navigationSagas.default);
           renderRoute(component);
@@ -63,6 +63,28 @@ export default function createRoutes(store) {
 
             importModules.catch(errorLoading);
           },
+          childRoutes: [
+            {
+              path: '/topics/:topicName/add',
+              name: 'linkFormContainer',
+              getComponent(nextState, cb) {
+                const importModules = Promise.all([
+                  System.import('containers/LinkFormContainer/reducer'),
+                  System.import('containers/LinkFormContainer/sagas'),
+                  System.import('containers/LinkFormContainer'),
+                ]);
+
+                const renderRoute = loadModule(cb);
+
+                importModules.then(([reducer, sagas, component]) => {
+                  injectReducer('linkFormContainer', reducer.default);
+                  injectSagas('linkFormContainer', sagas.default);
+                  renderRoute(component);
+                });
+                importModules.catch(errorLoading);
+              },
+            },
+          ],
         },
         {
           path: '/login',
