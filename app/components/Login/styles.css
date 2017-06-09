@@ -16,15 +16,6 @@
   margin-bottom: 20px;
 }
 
-.input {
-  border-bottom: solid rgba(0, 0, 0, 0.2) 1px;
-  padding: 5px;
-  border-top: 0;
-  border-left: 0;
-  border-right: 0;
-  width: 100%;
-  font-size: 18px;
-}
 
 .actionContainer {
   display: flex;
@@ -46,13 +37,3 @@
   font-weight: 700;
 }
 
-.errorMessage {
-  color: #ce1313;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  font-size: 14px;
-}
-
-.inputError {
-  border-bottom-color: #ce1313;
-}

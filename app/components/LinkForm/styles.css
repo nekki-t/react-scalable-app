@@ -29,16 +29,6 @@
   margin-bottom: 20px;
 }
 
-.input {
-  border-bottom: solid rgba(0, 0, 0, 0.2) 1px;
-  padding: 5px;
-  border-top: 0;
-  border-left: 0;
-  border-right: 0;
-  width: 100%;
-  font-size: 18px;
-}
-
 .actionContainer {
   display: flex;
   justify-content: flex-end;
@@ -69,3 +59,9 @@
 .inputError {
   border-bottom-color: #ce1313;
 }
+
+.input {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
